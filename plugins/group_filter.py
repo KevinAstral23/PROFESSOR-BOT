@@ -82,7 +82,7 @@ async def next_page(bot, query):
         offset = 0
     search = temp.BUTTONS.get(key)
     if not search:
-        await query.answer("You are using one of my old messages, please send the request again.", show_alert=True)
+        await query.answer("𝖮𝖫𝖣!! 𝖱𝖾𝗊𝗎𝖾𝗌𝗍 𝖺𝗀𝖺𝗂𝗇", show_alert=True)
         return
 
     files, n_offset, total = await get_search_results(search, offset=offset, filter=True)
@@ -151,7 +151,7 @@ async def advantage_spoll_choker(bot, query):
         return await query.message.delete()
     movies = SPELL_CHECK.get(query.message.reply_to_message.id)
     if not movies:
-        return await query.answer("You are clicking on an old button which is expired.", show_alert=True)
+        return await query.answer("𝖡𝗎𝗍𝗍𝗈𝗇 𝗁𝖺𝗌 𝖾𝗑𝗉𝗂𝗋𝖾𝖽 𝗏𝗋𝗈.", show_alert=True)
     movie = movies[(int(movie_))]
     await query.answer('𝖧𝗈𝗅𝖽 𝖴𝗉 𝖫𝖾𝗍 𝗆𝖾 𝖫𝗈𝗈𝗄...')
     k = await manual_filters(bot, query.message, text=movie)
@@ -231,12 +231,12 @@ async def auto_filter(client, msg, spoll=False):
         temp.BUTTONS[key] = search
         req = message.from_user.id if message.from_user else 0
         btn.append(
-            [InlineKeyboardButton(text=f"📄 𝖯𝖺𝗀𝖾 1/{math.ceil(int(total_results) / 6)}", callback_data="pages"),
-             InlineKeyboardButton(text="𝖭𝖾𝗑𝗍 ▶️", callback_data=f"next_{req}_{key}_{offset}")]
+            [InlineKeyboardButton(text=f"📄 𝖯𝖠𝖦𝖤 1/{math.ceil(int(total_results) / 6)}", callback_data="pages"),
+             InlineKeyboardButton(text="𝖭𝖤𝖷𝖳 ▶️", callback_data=f"next_{req}_{key}_{offset}")]
         )
     else:
         btn.append(
-            [InlineKeyboardButton(text="📄 𝖯𝖺𝗀𝖾 1/1", callback_data="pages")]
+            [InlineKeyboardButton(text="📄 𝖯𝖠𝖦𝖤 1/1", callback_data="pages")]
         )
     
     imdb = await get_poster(search, file=(files[0]).file_name) if settings["imdb"] else None
@@ -276,7 +276,7 @@ async def auto_filter(client, msg, spoll=False):
             **locals()
         )
     else:
-        cap = f"Here is what i found for your query {search}"
+        cap = f"<b>𝖧𝖾𝗋𝖾'𝗌 𝗐𝗁𝖺𝗍 𝖨 𝖥𝖮𝖴𝖭𝖣 {search}</b>"
     if imdb and imdb.get('poster'):
         try:
             hehe = await message.reply_photo(photo=imdb.get('poster'), caption=cap, reply_markup=InlineKeyboardMarkup(btn))
